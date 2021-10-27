@@ -1,0 +1,75 @@
+<div class="header">
+    <div class="header-left">
+        <a href="#" class="logo">
+            <img src="assets/images/artiago.jpg" width="35" height="35" alt=""> <span>Artiago</span>
+        </a>
+    </div>
+    <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
+    <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>
+    <ul class="nav user-menu float-right">
+        <li class="nav-item dropdown has-arrow">
+            <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
+                <span class="user-img">
+                    <img class="rounded-circle" src="assets/images/user.jpg" width="24" alt="Admin">
+                    <span class="status online"></span>
+                </span>
+                <span>Admin</span>
+            </a>
+            <div class="dropdown-menu">
+                <!-- <a class="dropdown-item" href="profile.html">My Profile</a>
+                <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
+                <a class="dropdown-item" href="settings.html">Settings</a> -->
+                <a class="dropdown-item" routerLink="/admin/login">Logout</a>
+            </div>
+        </li>
+    </ul>
+    <div class="dropdown mobile-user-menu float-right">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+        <div class="dropdown-menu dropdown-menu-right">
+            <!-- <a class="dropdown-item" href="profile.html">My Profile</a>
+            <a class="dropdown-item" href="edit-profile.html">Edit Profile</a> -->
+            <a class="dropdown-item" routerLink="/admin/login">Logout</a>
+        </div>
+    </div>
+</div>
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+            <ul>
+                <li class="menu-title">Main</li>
+                <li class="">
+                    <a routerLinkActive="active" routerLink="/admin"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+                </li>
+                <li>
+                    <a routerLinkActive="active" routerLink="/admin/user"><i class="fa fa-user-o"></i> <span>Admins</span></a>
+                </li>
+                <li>
+                    <a routerLinkActive="active" routerLink="/admin/tag"><i class="fa fa-tags"></i> <span>Tags</span></a>
+                </li>
+                <li>
+                    <a routerLinkActive="active" routerLink="/admin/album"><i class="fa fa-picture-o"></i> <span>Albums</span></a>
+                </li>
+                <li>
+                    <a routerLinkActive="active" routerLink="/admin/category"><i class="fa fa-sitemap"></i> <span>Categories</span></a>
+                </li>
+                <li>
+                    <a routerLinkActive="active" routerLink="/admin/event"><i class="fa fa-calendar"></i> <span>Events</span></a>
+                </li>
+                <li>
+                    <a routerLinkActive="active" routerLink="/admin/video-session"><i class="fa fa-file-movie-o"></i> <span>Videos</span></a>
+                </li>
+                <li>
+                    <a routerLinkActive="active" routerLink="/admin/event-user"><i class="fa fa-list"></i> <span>Event Registrations</span></a>
+                </li>
+                <li>
+                    <a routerLinkActive="active" routerLink="/admin/live-user"><i class="fa fa-list"></i> <span>Live Registrations</span></a>
+                </li>
+                <li>
+                    <a routerLinkActive="active" routerLink="/admin/product"><i class="fa fa-object-group"></i> <span>Items</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
