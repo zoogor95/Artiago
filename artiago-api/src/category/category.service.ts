@@ -1,7 +1,8 @@
 
 import { Injectable, Inject } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { FindConditions, IsNull, Repository } from 'typeorm';
+import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
 import { Category } from './category.entity';
 import { CategoryDto } from './createCategoryDto';
 
@@ -10,8 +11,8 @@ export class CategoryService {
 
     constructor(@InjectRepository(Category) private categoryRepository: Repository<Category>) { }
 
-    async getCategories(): Promise<Category[]> {
-        return await this.categoryRepository.find();
+    async getCategories(): Promise<any[]> {
+        return await this.categoryRepository.findAndCount();
     }
 
     async getCategory(_id: number): Promise<Category> {
@@ -22,14 +23,20 @@ export class CategoryService {
     }
 
     async updateCategory(category: Category) {
-        this.categoryRepository.save(category)
+
+        let where: QueryDeepPartialEntity<Category> = {
+            id: category.id
+        }
+        delete category.id;
+        this.categoryRepository.update(category, where);
     }
 
-    async deleteCategory(category: Category) {
-        this.categoryRepository.delete(category);
+    async deleteCategory(category: number) {
+        return await this.categoryRepository.softDelete(category);
     }
 
     async createCategory(category: CategoryDto) {
-        this.categoryRepository.create(category);
+        return await this.categoryRepository.insert(category);
     }
 }
+

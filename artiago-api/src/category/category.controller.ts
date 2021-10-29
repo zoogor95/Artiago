@@ -9,27 +9,27 @@ export class CategoryController {
     constructor(private service: CategoryService) { }
 
     @Get(':id')
-    get(@Param() params) {
-        return this.service.getCategory(params.id);
+    async get(@Param() params) {
+        return await this.service.getCategory(params.id);
     }
 
     @Get()
-    getAll() {
-        return this.service.getCategories();
+    async getAll() {
+        return await this.service.getCategories();
     }
 
     @Post()
-    create(@Body() category: CategoryDto) {
-        return this.service.createCategory(category);
+    async create(@Body() category: CategoryDto) {
+        return await this.service.createCategory(category);
     }
 
     @Put()
-    update(@Body() category: Category) {
-        return this.service.updateCategory(category);
+    async update(@Body() category: Category) {
+        return await this.service.updateCategory(category);
     }
 
     @Delete(':id')
-    deleteCategory(@Param() params) {
-        return this.service.deleteCategory(params.id);
+    async deleteCategory(@Param() params) {
+        return await this.service.deleteCategory(params.id);
     }
 }

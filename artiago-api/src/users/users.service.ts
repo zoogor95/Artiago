@@ -24,6 +24,6 @@ export class UsersService {
     }
 
     async deleteUser(user: User) {
-        this.usersRepository.delete(user);
+        this.usersRepository.softDelete(user);
     }
 }

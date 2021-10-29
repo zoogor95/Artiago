@@ -5,6 +5,12 @@ import { Connection } from 'typeorm';
 import { User } from './users/user.entity';
 import { CategoryModule } from './category/category.module';
 import { Category } from './category/category.entity';
+import { EventModule } from './event/event.module';
+import { EventUserModule } from './event-user/event-user.module';
+import { TagModule } from './tag/tag.module';
+import { Event } from './event/event.entity';
+import { EventUser } from './event-user/event-user.entity';
+import { Tag } from './tag/tag.entity';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -14,11 +20,14 @@ import { Category } from './category/category.entity';
       username: 'root',
       password: '',
       database: 'artiago_db',
-      entities: [User, Category],
+      entities: [User, Category, Event, EventUser, Tag],
       synchronize: true,
     }),
     UsersModule,
-    CategoryModule
+    CategoryModule,
+    EventModule,
+    EventUserModule,
+    TagModule
   ],
 })
 export class AppModule {

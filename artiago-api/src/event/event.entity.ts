@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, DeleteDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
-export class Category {
+export class Event {
 
     @PrimaryGeneratedColumn()
     id: number;
@@ -9,14 +9,23 @@ export class Category {
     @Column({ length: 45 })
     name:string;
     
+    @Column({ length: 5000 })
+    description:string;
+
+    @Column({ length: 5000 })
+    additionalInformation:string;
+
+    @Column({ length: 5000 })
+    eventBanner:string;
+
     @CreateDateColumn()
-    createdAt!: Date;
+    createdOn!: Date;
 
     @UpdateDateColumn()
-    updatedAt!: Date;
+    updatedOn!: Date;
 
     // Add this column to your entity!
     @DeleteDateColumn()
-    deletedAt?: Date;
+    deletedOn?: Date;
 
 }
