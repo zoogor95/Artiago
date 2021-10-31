@@ -17,7 +17,7 @@ export class CategoryService {
 
     async getCategory(_id: number): Promise<Category> {
         return await this.categoryRepository.findOne({
-            select: ["name"],
+            select: ["id", "name"],
             where: [{ "id": _id }]
         });
     }

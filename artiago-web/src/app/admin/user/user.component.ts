@@ -15,26 +15,29 @@ export class UserComponent implements OnInit {
   users: any[] = [];
   totalCount: number = 0;
   isDialogOpen=false;
-  selectedType = null;
   isTableLoading=false;
   types: any[] = [{label: 'SuperAdmin', value: 1}, {label: 'Admin', value: 2}]
-  async ngOnInit(): Promise<void> {
-    this.getUsers();
-  }
-
-  @ViewChild('userDialog') userDialog!: ElementRef;
-  async addUserModal(id?: number) {
-    if(id) {
-      this.userModel = await this.apiService.get(`user/${id}`);
-    }
-    this.isDialogOpen = true;
-  }
-
   userModel: {id?: number; username: string; password?: string; type: number | null} = {
     id: undefined,
     username: '',
     password: '',
     type: null,
+  }
+  async ngOnInit(): Promise<void> {
+    this.getUsers();
+  }
+
+  async addUserModal(id?: number) {
+    this.userModel = {
+      id: undefined,
+      username: '',
+      password: '',
+      type: null,
+    }
+    if(id) {
+      this.userModel = await this.apiService.get(`user/${id}`);
+    }
+    this.isDialogOpen = true;
   }
 
   isFormValid() {

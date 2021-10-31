@@ -13,5 +13,15 @@ export class Tag {
     description:string;
 
     @Column()
-    category_id: number
+    category_id: number;
+    
+    @CreateDateColumn()
+    createdAt!: Date;
+
+    @UpdateDateColumn()
+    updatedAt!: Date;
+
+    // Add this column to your entity!
+    @DeleteDateColumn()
+    deletedAt?: Date;
 }
