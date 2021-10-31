@@ -1,7 +1,54 @@
 <div class="main-wrapper">
     <app-admin-navbar></app-admin-navbar>
-    <p>user works!</p>
-
+    <div class="main-admin">
+        <p-table [value]="users" [loading]="isTableLoading">
+            <ng-template pTemplate="caption">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                    Users
+                    <p-button icon="pi pi-plus" (click)="addUserModal()"></p-button>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>id</th>
+                    <th>Username</th>
+                    <th>Type</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-user>
+                <tr>
+                    <td><a (click)="addUserModal(user.id)">{{user.id}}</a></td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.type}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
 </div>
-
 <div class="sidebar-overlay" data-reff=""></div>
+
+<p-dialog  [(visible)]="isDialogOpen">
+    <ng-template pTemplate="header">
+        Users
+    </ng-template>
+    <div class="p-grid p-fluid">
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                <input type="text" pInputText placeholder="Username" [(ngModel)]="userModel.username">         
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4" *ngIf="!userModel.id">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+                <input type="text" pInputText placeholder="Password" [(ngModel)]="userModel.password">
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <p-dropdown [options]="types" [(ngModel)]="userModel.type"></p-dropdown>
+        </div>
+    </div>
+    <ng-template pTemplate="footer">
+        <p-button (click)="SaveUser()" [disabled]="!isFormValid()">Save</p-button>
+    </ng-template>
+</p-dialog>

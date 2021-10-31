@@ -23,20 +23,17 @@ export class CategoryService {
     }
 
     async updateCategory(category: Category) {
-
-        let where: QueryDeepPartialEntity<Category> = {
-            id: category.id
-        }
+        let where: FindConditions<Category> = { id: category.id }
         delete category.id;
-        this.categoryRepository.update(category, where);
+        return await this.categoryRepository.update(where, category);
+    }
+
+    async createCategory(category: Category) {
+        return await this.categoryRepository.insert(category);
     }
 
     async deleteCategory(category: number) {
         return await this.categoryRepository.softDelete(category);
-    }
-
-    async createCategory(category: CategoryDto) {
-        return await this.categoryRepository.insert(category);
     }
 }
 

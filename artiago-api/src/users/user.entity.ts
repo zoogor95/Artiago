@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, DeleteDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
 export class User {
@@ -15,4 +15,13 @@ export class User {
     @Column()
     type:number;
 
+    @CreateDateColumn()
+    createdAt!: Date;
+
+    @UpdateDateColumn()
+    updatedAt!: Date;
+
+    // Add this column to your entity!
+    @DeleteDateColumn()
+    deletedAt?: Date;
 }

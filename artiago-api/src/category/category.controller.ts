@@ -19,13 +19,11 @@ export class CategoryController {
     }
 
     @Post()
-    async create(@Body() category: CategoryDto) {
+    async create(@Body() category: Category) {
+        if(category.id) {
+            return await this.service.updateCategory(category);
+        }
         return await this.service.createCategory(category);
-    }
-
-    @Put()
-    async update(@Body() category: Category) {
-        return await this.service.updateCategory(category);
     }
 
     @Delete(':id')
