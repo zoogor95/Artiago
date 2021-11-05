@@ -15,17 +15,17 @@ export class Event {
     @Column({ length: 5000 })
     additionalInformation:string;
 
-    @Column({ length: 5000 })
-    eventBanner:string;
+    @Column()
+    bannerImage:string;
 
     @CreateDateColumn()
-    createdOn!: Date;
+    createdAt!: Date;
 
     @UpdateDateColumn()
-    updatedOn!: Date;
+    updatedAt!: Date;
 
     // Add this column to your entity!
     @DeleteDateColumn()
-    deletedOn?: Date;
+    deletedAt?: Date;
 
 }

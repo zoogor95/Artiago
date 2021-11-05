@@ -39,6 +39,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { PasswordModule } from 'primeng/password';
 import { DropdownModule } from 'primeng/dropdown';
+import { FileUploadModule } from 'primeng/fileupload';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,6 +82,7 @@ import { DropdownModule } from 'primeng/dropdown';
     FormsModule,
     PasswordModule,
     DropdownModule,
+    FileUploadModule,
   ],
   providers: [DialogService],
   bootstrap: [AppComponent]

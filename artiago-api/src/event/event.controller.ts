@@ -4,33 +4,39 @@ import { Event } from './event.entity';
 import { EventService } from './event.service';
 import { EventDto } from './createEventDto';
 
-@Controller('event')
+@Controller('events')
 export class EventController {
     
     constructor(private service: EventService) { }
 
     @Get(':id')
-    get(@Param() params) {
-        return this.service.getEvent(params.id);
+    async get(@Param() params) {
+        return await this.service.getEvent(params.id);
     }
 
     @Get()
-    getAll() {
-        return this.service.getEvents();
+    async getAll() {
+        try {
+
+            return await this.service.getEvents();
+        }catch(ex){
+            console.log('error: ', ex)
+        }
     }
 
     @Post()
-    create(@Body() event: EventDto) {
-        return this.service.createEvent(event);
-    }
-
-    @Put()
-    update(@Body() event: Event) {
-        return this.service.updateEvent(event);
+    async create(@Body() event: Event) {
+        
+        console.log('111111111111111111111111111111')
+        if(event.id) {
+            return await this.service.updateEvent(event);
+        }
+        return await this.service.createEvent(event);
     }
 
     @Delete(':id')
-    deleteEvent(@Param() params) {
+    async deleteEvent(@Param() params) {
         return this.service.deleteEvent(params.id);
     }
+    
 }

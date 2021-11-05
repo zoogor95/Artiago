@@ -3,5 +3,5 @@ export class EventDto {
     name?: string;
     description?: string;
     additionalInformation?: string;
-    eventBanner?: string;
+    bannerImage?: string;
 }

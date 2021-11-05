@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+// import { useStaticAssets } from '@nestjs/serve-static/dist/serve-static.module';
 import { Connection } from 'typeorm';
 import { User } from './users/user.entity';
 import { CategoryModule } from './category/category.module';
@@ -11,7 +12,13 @@ import { TagModule } from './tag/tag.module';
 import { Event } from './event/event.entity';
 import { EventUser } from './event-user/event-user.entity';
 import { Tag } from './tag/tag.entity';
+import { join } from 'path';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+
 @Module({
+  controllers: [AppController],
+  providers: [AppService],
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
