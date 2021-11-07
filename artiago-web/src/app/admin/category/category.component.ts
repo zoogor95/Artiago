@@ -50,9 +50,10 @@ export class CategoryComponent implements OnInit {
    async SaveTag() {
     this.categoryModel.name = this.categoryModel.name.trim();
     this.isTableLoading = true;
+    this.isDialogOpen = false;
     await this.apiService.post('category', this.categoryModel);
     this.getTags();
-    this.isDialogOpen = false;
+    
   }
 
   ngOnInit(): void {

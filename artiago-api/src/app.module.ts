@@ -12,6 +12,10 @@ import { TagModule } from './tag/tag.module';
 import { Event } from './event/event.entity';
 import { EventUser } from './event-user/event-user.entity';
 import { Tag } from './tag/tag.entity';
+import { Video } from './video/video.entity';
+import { VideoModule } from './video/video.module';
+import { Item } from './item/item.entity';
+import { ItemModule } from './item/item.module';
 import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -27,14 +31,16 @@ import { AppService } from './app.service';
       username: 'root',
       password: '',
       database: 'artiago_db',
-      entities: [User, Category, Event, EventUser, Tag],
+      entities: [User, Category, Event, EventUser, Tag, Video, Item],
       synchronize: true,
     }),
     UsersModule,
     CategoryModule,
     EventModule,
     EventUserModule,
-    TagModule
+    TagModule,
+    VideoModule,
+    ItemModule
   ],
 })
 export class AppModule {

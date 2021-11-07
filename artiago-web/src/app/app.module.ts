@@ -28,6 +28,7 @@ import { EventRegistrationComponent } from './default/event-registration/event-r
 import { LiveRegistrationComponent } from './default/live-registration/live-registration.component';
 import { ItemComponent } from './admin/item/item.component';
 
+
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { DialogService } from 'primeng/dynamicdialog';
@@ -65,6 +66,7 @@ import { FileUploadModule } from 'primeng/fileupload';
     EventRegistrationComponent,
     LiveRegistrationComponent,
     ItemComponent
+    
   ],
   imports: [
     BrowserModule,

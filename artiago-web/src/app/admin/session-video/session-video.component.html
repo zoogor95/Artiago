@@ -1,7 +1,63 @@
 <div class="main-wrapper">
     <app-admin-navbar></app-admin-navbar>
-    <p>session-video works!</p>
-
+    <div class="main-admin">
+        <p-table [value]="videos" [loading]="isTableLoading">
+            <ng-template pTemplate="caption">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                    Video
+                    <p-button icon="pi pi-plus" (click)="addVideoModal()"></p-button>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Video</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-data>
+                <tr>
+                    <td><a (click)="addVideoModal(data.id)">{{data.id}}</a></td>
+                    <td><img [src]="getImage(data.thumbnail)"/>{{data.name}}</td>
+                    <td>{{data.description}}</td>
+                    <td>{{data.videoLink}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
 </div>
-
 <div class="sidebar-overlay" data-reff=""></div>
+
+<p-dialog  [(visible)]="isDialogOpen">
+    <ng-template pTemplate="header">
+        Video
+    </ng-template>
+    <div class="p-grid p-fluid">
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <input type="text" pInputText placeholder="Name" [(ngModel)]="videoModel.name">         
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <input type="textarea" pInputText placeholder="Description" [(ngModel)]="videoModel.description">
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4" *ngIf="!videoModel.id">
+            <div class="p-inputgroup">
+                <input type="textarea" pInputText placeholder="Video Link" [(ngModel)]="videoModel.videoLink">
+            </div>
+        </div>
+        
+        <div class="p-col-12 p-md-4" *ngIf="!videoModel.thumbnail">
+            <div class="p-inputgroup">
+                <p-fileUpload [files]="images" #fileUploader placeholder="Thumbnail"></p-fileUpload>
+                <!-- <input type="textarea" pInputText placeholder="Description" [(ngModel)]="videoModel.description"> -->
+            </div>
+        </div>
+    </div>
+    <ng-template pTemplate="footer">
+        <p-button (click)="SaveVideo()" [disabled]="!isFormValid()">Save</p-button>
+    </ng-template>
+</p-dialog>

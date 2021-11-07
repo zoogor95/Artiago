@@ -70,10 +70,10 @@ export class EventComponent implements OnInit {
     this.eventModel.description = this.eventModel.description.trim();
     let base64 = await this.toBase64(this.fileUploader.files[0]);
     base64 ? this.eventModel.bannerImage = base64 as string: false;
+    this.isDialogOpen = false;
     this.isTableLoading = true;
     await this.apiService.post('events', this.eventModel);
     this.getEvents();
-    this.isDialogOpen = false;
   }
 
   toBase64 = (file: Blob) => new Promise((resolve, reject) => {
